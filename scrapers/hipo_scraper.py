@@ -42,7 +42,7 @@ class HipoScraper:
 
         # Get last page
         driver.get(search_url)
-        r = driver.find_element(By.CLASS_NAME, "page-last")
+        # r = driver.find_element(By.CLASS_NAME, "page-last")
         # last_page_url = r.get_attribute("href")
         # last_page = int(re.findall(r'\d+', last_page_url)[-1])
 
