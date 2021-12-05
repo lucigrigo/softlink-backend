@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome import options
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from settings import *
@@ -9,9 +10,11 @@ class BestJobsScraper:
     
     def scrape_jobs(self, job_title : str, skills : list, location : str):
         options = Options()
-        options.headless = True
+        options.binary_location = GOOGLE_CHROME_BIN
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
 
-        driver = webdriver.Chrome(options=options, executable_path=CHROME_DRIVER_PATH)
+        driver = webdriver.Chrome(options=options, executable_path=GOOGLE_CHROME_DRIVER_PATH)
         
         search_url = self.site_url
         if job_title:

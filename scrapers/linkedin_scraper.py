@@ -12,14 +12,17 @@ class LinkedInScraper:
 
     def scrape_candidates(self, job_title : str, skills : list, location : str):
         options = Options()
-        options.headless = True
+        options.binary_location = GOOGLE_CHROME_BIN
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+
+        driver = webdriver.Chrome(options=options, executable_path=GOOGLE_CHROME_DRIVER_PATH)
 
         # Very secret credentials:
         email = "softlinksoftsquad@gmail.com"
         password = "hackitall2021"
 
         # Login
-        driver = webdriver.Chrome(options=options, executable_path=CHROME_DRIVER_PATH)
         driver.get('https://www.linkedin.com/login')
         time.sleep(3)
         driver.find_element_by_id('username').send_keys(email)

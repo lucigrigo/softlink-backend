@@ -39,7 +39,7 @@ def get_jobs():
             data.append(d)
     return dumps(data, default=obj_dict), 200
 
-@app.route('/welcome')
+@app.route('/')
 def index():
   return "<h1>Welcome to SoftLink backend</h1>"
 

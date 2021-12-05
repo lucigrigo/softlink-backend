@@ -9,8 +9,11 @@ class EJobsScraper:
     
     def scrape_jobs(self, job_title : str, skills : list, location : str):
         options = Options()
-        options.headless = True
-        driver = webdriver.Chrome(options=options, executable_path=CHROME_DRIVER_PATH)
+        options.binary_location = GOOGLE_CHROME_BIN
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+
+        driver = webdriver.Chrome(options=options, executable_path=GOOGLE_CHROME_DRIVER_PATH)
         search_url = self.site_url
 
         if location:
