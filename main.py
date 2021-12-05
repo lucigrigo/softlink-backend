@@ -32,12 +32,7 @@ def get_jobs():
         r = scraper.scrape_jobs(job_title, skills, location)
         if r:
             scrape_results.append(r)
-    data = []
-    for dct in scrape_results:
-        for k, v in dct.items():
-            d = {'job_title':k[0], 'company_name':k[1], 'link':v}
-            data.append(d)
-    return dumps(data, default=obj_dict), 200
+    return jsonify(scrape_results), 200
 
 @app.route('/')
 def index():
