@@ -6,14 +6,14 @@ from settings import *
 import time
 
 class LinkedInScraper:
-
     def __init__(self, site_url : str):
         self.site_url = site_url
 
     def scrape_candidates(self, job_title : str, skills : list, location : str):
         options = Options()
         options.binary_location = GOOGLE_CHROME_BIN
-        options.add_argument('--disable-gpu')
+        # options.add_argument('--disable-gpu')
+        options.headless = True
         options.add_argument('--no-sandbox')
 
         driver = webdriver.Chrome(options=options, executable_path=GOOGLE_CHROME_DRIVER_PATH)
